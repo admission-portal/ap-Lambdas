@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: 'QMS: to get queries of all the users/student'
+Resources:
+  getAllQueries:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.9
+      CodeUri: .
+      Description: 'QMS: to get queries of all the users/student'
+      MemorySize: 128
+      Timeout: 3
+      Role: 'arn:aws:iam::661588767260:role/service-role/PutItemsRole'
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /handlequeries
+            Method: GET

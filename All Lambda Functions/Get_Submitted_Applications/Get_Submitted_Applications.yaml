@@ -1,0 +1,29 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: >-
+  Get the submitted applications from the Submitted_Applications table(For both
+  admin and the student)
+Resources:
+  GetSubmittedApplications:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.8
+      CodeUri: .
+      Description: >-
+        Get the submitted applications from the Submitted_Applications table(For
+        both admin and the student)
+      MemorySize: 128
+      Timeout: 3
+      Role: 'arn:aws:iam::661588767260:role/AllowLambdaDynamoDb'
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /Get_Submitted_Applications
+            Method: GET
+        Api2:
+          Type: Api
+          Properties:
+            Path: /Get_Submitted_Applications
+            Method: GET
